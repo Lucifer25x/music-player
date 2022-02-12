@@ -5,10 +5,10 @@
 * Open Music
 * Play/Pause Music
 * Choose the time you want
-
-#### Expected functions:
 * Add music to favorites
 * Remove music from favorites
+
+#### Expected functions:
 * Create Playlist
 
 ### Screenshot:
