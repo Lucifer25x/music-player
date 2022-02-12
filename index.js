@@ -9,25 +9,53 @@ const rightinfo = document.getElementById('right');
 const img = document.getElementById('img');
 const music = document.getElementById('music');
 const musicname = document.getElementById('music-name');
-let source = false;
+const like = document.getElementById('like');
+let source = "";
 let play = false;
 
 // When the user click on the play button
 playbutton.addEventListener('click', () => {
     play = !play;
     // Plays music if source loaded and play is true
-    if (play && source) {
+    if (play && source !== "") {
         img.classList.add('playing');
         music.play();
-        playbutton.setAttribute('src', './images/pause.png');
+        playbutton.src = './images/pause.png';
     } else {
-        if(source){
+        if(source !== ""){
             music.pause();   
         }
         img.classList.remove('playing');
-        playbutton.setAttribute('src', './images/play.png');
+        playbutton.src = './images/play.png';
     }
 })
+
+// Like the song
+like.addEventListener('click', () => {
+    if (source !== "") {
+        const likelist = fs.readFileSync('./data/like.json');
+        const likejson = JSON.parse(likelist);
+        if (likejson.includes(source)) {
+            likejson.splice(likejson.indexOf(source), 1);
+            like.src = './images/heart-black.png';
+        } else {
+            likejson.push(source);
+            like.src = './images/heart.png';
+        }
+        fs.writeFileSync('./data/like.json', JSON.stringify(likejson));
+    }
+})
+
+// Check song is liked or not
+function checkLike(path){
+    const likelist = fs.readFileSync('./data/like.json');
+    const likejson = JSON.parse(likelist);
+    if(likejson.includes(path)){
+        like.src = './images/heart.png';
+    } else {
+        like.src = './images/heart-black.png';
+    }
+}
 
 // Function to format the time
 function formatTime(second){
@@ -72,7 +100,7 @@ function startPlaying(){
 // When file opened
 ipcRenderer.on('open-file', (event, filepath) => {
     if(filepath !== undefined){
-        source = true;
+        source = filepath;
         let filename = filepath.split('/').pop();
         let musicName = filename.split('.')[0];
         musicname.innerHTML = musicName;
@@ -82,5 +110,6 @@ ipcRenderer.on('open-file', (event, filepath) => {
             rightinfo.innerHTML = duration;
             startPlaying();
         })
+        checkLike(filepath);
     }
 })
