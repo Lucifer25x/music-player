@@ -76,8 +76,10 @@ body {
 
 .buttons {
     margin-top: 1em;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 .buttons img {
     width: 50px;
