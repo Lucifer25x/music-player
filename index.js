@@ -10,6 +10,11 @@ const img = document.getElementById('img');
 const music = document.getElementById('music');
 const musicname = document.getElementById('music-name');
 const like = document.getElementById('like');
+const volumeControl = document.querySelector('.volume-control');
+const volumeLine = document.querySelector('.volume-line');
+const volumeCircle = document.querySelector('.volume-circle');
+const okButton = document.getElementById('ok');
+const volume = document.getElementById('volume');
 let source = "";
 let play = false;
 
@@ -69,6 +74,26 @@ function formatTime(second){
     }
     return min + ':' + sec;
 }
+
+// Volume Control
+volume.addEventListener('click', () => {
+    if(play && source !== ""){
+        if (volumeControl.classList.contains('visible')) {
+            volumeControl.classList.remove('visible');
+        } else {
+            volumeControl.classList.add('visible');
+        }
+    }
+})
+volumeLine.addEventListener('click', (e) => {
+    const percent = e.offsetX / parseInt(window.getComputedStyle(volumeLine).width);
+    music.volume = percent;
+    volumeCircle.style.left = percent * 100 + '%';
+})
+
+okButton.addEventListener('click', () => {
+    volumeControl.classList.remove('visible');
+})
 
 // When the music is playing
 function startPlaying(){
