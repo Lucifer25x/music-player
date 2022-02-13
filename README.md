@@ -7,11 +7,11 @@
 * Choose the time you want
 * Add music to favorites
 * Remove music from favorites
+* Volume Control
 
 #### Expected functions:
 * Create Playlist
 * More minimal and beautiful design
-* Volume settings
 
 ### Screenshot:
 ![Screenshot](./screenshot.png)
