@@ -7,6 +7,7 @@
 
 body {
     background-color: #131313;
+    user-select: none;
 }
 
 .back {
@@ -99,4 +100,53 @@ body {
     text-align: center;
     margin: 1em auto;
     font-size: 1.2em;
+}
+
+.volume-control {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,.7);
+    border-radius: 10px;
+    z-index: 100;
+    width: 200px;
+    padding: 1em 0;
+}
+.volume-control.visible {
+    display: flex;
+}
+
+.volume-line {
+    position: relative;
+    width: 90%;
+    height: 7px;
+    background-color: black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.volume-circle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #4245d1;
+}
+.volume-control button {
+    padding: .3em 1em;
+    background-color: #4c4d94;
+    border: 1px solid #4245d1;
+    border-radius: 5px;
+    margin-top: 1em;
+    cursor: pointer;
+}
+.volume-control button:hover {
+    background-color: #1f206b;
 }
