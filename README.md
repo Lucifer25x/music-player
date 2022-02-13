@@ -13,5 +13,7 @@
 * Create Playlist
 * More minimal and beautiful design
 
-### Screenshot:
-![Screenshot](./screenshot.png)
+### Screenshots:
+![Screenshot](./main.png)
+#### Volume Control
+![Volume](./volume.png)
