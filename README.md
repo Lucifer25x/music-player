@@ -10,6 +10,8 @@
 
 #### Expected functions:
 * Create Playlist
+* More minimal and beautiful design
+* Volume settings
 
 ### Screenshot:
 ![Screenshot](./screenshot.png)
