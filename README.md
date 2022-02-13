@@ -18,4 +18,4 @@
 #### Volume Control
 ![Volume](./volume.png)
 
-#### If you liked the projects, please give star.
+#### If you liked the project, please give star.
